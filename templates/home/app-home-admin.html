@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <!-- Wallet Card -->
+        <div class="section wallet-card-section pt-1">
+            <div class="wallet-card">
+                <!-- Earnings -->
+                <div class="balance">
+                    <div class="left">
+                        <a href="{{url_for('admin_members')}}" class="item">
+                            <div class="in">
+                                <button type="button" class="btn btn-primary btn-lg btn-block">ADMIN PANEL</button>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Deposit button-->
+                    <div class="right">
+                    </div>
+                </div>
+                <!-- * Earnings -->
+
+                <div class="wallet-footer">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="section-heading">
+                <h2 class="title">Bank options</h2>
+            </div>
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{url_for('buyStocks')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/stocks.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Stocks</strong>
+                            <p>Buy and sell stock</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="{{url_for('checkCredit')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/credit.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Credit</strong>
+                            <p>Get a credit</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="#" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/partners.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Partners</strong>
+                            <p>Inquire about associates</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="#" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/avatar.png')}}" alt="img" class="image-block imaged w48">
+                        <div>
+                            <strong class="maincards">Admin Panel</strong>
+                            <p>control everything from the dashboard</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <br>
+        <!-- app footer -->
+        <div class="appFooter">
+            <div class="footer-title">
+                Copyright © Community Bank. All Rights Reserved.
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Ionicons -->
+    <!--<script src="../../../../unpkg.com/ionicons%405.0.0/dist/ionicons.js"></script>-->
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+</html>

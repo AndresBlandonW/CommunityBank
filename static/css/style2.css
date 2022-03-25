@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+#bienvenida {
+    background: #ffffff7c;
+    margin: 0px;
+    padding: 0px;
+    background: linear-gradient(to right, #9de29456, #f576876e, #dfbf836b), url(/contactofull.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    width: 100%;
+    height: 580px;
+    background: url(../images/contactofull.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+.navegacion {
+    min-height:1vh;
+    margin: 0;
+    padding: 0px;
+    background-color: #00000050;
+    background: linear-gradient(#000000d3, #000000e0);
+    position: center;
+    width: 100%;
+    position: fixed;
+    top: 5;
+    left: 5;
+}
+nav{
+    display: flex;
+    /*justify-content: space-between;*/
+}
+.imagen-nav{
+    overflow: hidden;
+    width: 27px;
+    padding: 0;
+}
+.navegacion ul{
+    display: flex;
+    margin-right: 40px;
+    line-height: 30px;
+    list-style: none;
+}
+.navegacion a{
+    text-decoration: none;
+    margin: 0;
+    padding: 12px;
+    color: rgb(0, 0, 0);
+    font-family: sans-serif, arial;
+    text-align: center;
+    display:block;
+}
+.navegacion li{
+    display: inline-block;
+    text-align: center;
+    font-size: 10px;
+    margin: 0, 10px;
+    line-height:30px;
+    text-transform: uppercase;
+}
+.navegacion a{
+    display: inline-block;
+    text-align: center;
+}
+.navegacion li a:hover{
+    background: #ef8354;
+}
+body {
+    padding:100px 20px, 0;
+}
+.decoracion{
+    position: absolute;
+    bottom: 1;
+    width: 100%;
+}
+header .textos {
+    display: flex;
+    height: 430px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.textos h1 {
+    font-size: 50px;
+    color: rgb(0, 0, 0);
+}
+.textos h2 {
+    font-size: 30px;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+}
+.textos-principales{
+    margin:auto;
+    padding: 50px;
+    font-family: sans-serif;
+}
+.articulo  p{
+    font-size: 20px;
+    color: rgb(29, 9, 88);
+}
+.textos-principales img {
+width: 500px;
+border: 5px solid;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0 310px;
+}
+.titulo-p{
+    font-size: 45px;
+    color: rgb(134, 26, 26);
+}
+.share img {
+    text-align: center;
+    padding: top 10px;
+    padding-bottom: 40px;
+    width: 60px;
+justify-content: center;
+align-items: center;
+margin: 0;
+}
+.share li{
+    display:inline-block;
+    padding: 20px;
+    margin:0 150px;
+}
+footer {
+    background: rgb(27, 27, 27);
+    padding: 60px 0 30px 0;
+    margin: auto;
+    overflow: hidden;
+}
+.contenedor-footer {
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(65, 65, 65);
+}
+.contenido-foo {
+    text-align: center;
+}
+.contenido-foo h4 {
+    color: white;
+    border-bottom: 3px solid #ff9100;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+.contenido-foo address {
+    color: white;
+}
+.contenido-foo p {
+    color: white;  
+}

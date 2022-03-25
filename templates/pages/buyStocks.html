@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Stocks</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Community Bank - Stocks">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Buy a Stock
+        </div>
+        <div class="right">
+            <a href="javascript:;" class="headerButton">
+                <ion-icon name="add-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section mt-2 mb-2">
+
+            <div class="goals">
+                <!-- item -->
+                <div class="item">
+                    <div class="in">
+                        <div>
+                            <h4>BUY COMMUNITY BANK STOCK</h4>
+                            <p>MERCADO ABIERTO</p>
+                        </div>
+                    </div>
+                    <p>El porcentaje de la rentabilidad de la accion comprada se calcula con los interes que las personas pagan al banco dividido entre las acciones del mismo</p>
+                </div>
+                <!-- * item -->
+                <!-- item -->
+                <form action="/buy" method="POST" autocomplete="off" accept-charset="UTF-8" name="Form">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="item">
+                        <div class="in">
+                            <div>
+                                <h4>IMPORTE</h4>
+                            </div>
+                        </div>
+                        <div class="wide-block pt-2 pb-2">
+                            <div class="row">
+                                <div class="">
+                                    <button type="button" class="btn btn-outline-primary shadowed mr-1 mb-1" onclick="decrementValue()">-</button>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control" id="impStock" name="stocks" value="0" style="text-align: center;" readonly/>
+                                </div>
+                                <div class="">
+                                    <button type="button" class="btn btn-outline-primary shadowed mr-1 mb-1" onclick="incrementValue()">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- * item -->
+                    <!-- item -->
+                    <div class="item">
+                        <div class="in">
+                            <div>
+                                <h4>Total a pagar:</h4>
+                            </div>
+                        </div>
+                        <div class="wide-block pt-2 pb-2">
+                            <input type="text" id="output-value" style="text-align: center;" readonly/>
+                        </div>
+                    </div>
+                    <!-- * item -->
+
+                    <!-- item -->
+                    <div class="item">
+                        <div class="wide-block pt-2 pb-2">
+                            <a class="btn btn-primary btn-lg mr-1" data-toggle="modal" data-target="#stockSheet">Buy Stocks</a>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade action-sheet" id="stockSheet" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Confirmation</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="action-sheet-content">
+                                        <p>
+                                            Do you really want to buy these shares?
+                                        </p>
+                                        <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+                                        <a href="#" class="btn btn-primary btn-block" data-dismiss="modal">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- * item -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <script>
+        var i = 0
+
+        function incrementValue() {
+            var textBox = document.getElementById('impStock')
+            textBox.value++;
+            i++;
+
+            var importe = document.getElementById("impStock").value;
+            var price = 10000;
+            document.getElementById("output-value").value = importe * price;
+
+        }
+
+        function decrementValue() {
+            if (document.getElementById('impStock').value > 0) {
+                var textBox = document.getElementById('impStock')
+                textBox.value--;
+                i--;
+
+                var importe = document.getElementById("impStock").value;
+                var price = 10000;
+                document.getElementById("output-value").value = importe * price;
+
+            }
+        }
+    </script>
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+</body>
+
+</html>

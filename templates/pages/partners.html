@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Partners</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+        <ul class="listview image-listview">
+            {% for partner in partners %}
+            <li>
+                <div class="item">
+                    <img src="{{url_for('static', filename='img/avatarU.png')}}" alt="image" class="image">
+                    <div class="in">
+                        <div>{{partner[0]}}</div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <!-- cerrado principal-->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+
+</html>

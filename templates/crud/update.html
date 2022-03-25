@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<form action="/update/{{ part.cc }}", method="POST">
+
+    <input type="integer" name="cc" placeholder="Ingrese su numero de identificacion", value="{{ part.cc }}"/>
+    <input type="text" name="fullname" placeholder="Ingrese su nombre", value="{{ part.fullname }}"/>
+    <input type="text" name="email" placeholder="Ingrese su email", value="{{ part.email }}"/>
+    <input type="text" name="phone" placeholder="Ingrese su telefono", value="{{ part.phone }}"/>
+
+    <button>
+        Actualizar
+    </button>
+</form>
+
+{% endblock %}

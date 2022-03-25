@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Transactions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+        <!-- Datos de usuario-->
+        <div class="section full mt-1 mb-2">
+            <div class="section-title">Personal information</div>
+            <div class="wide-block pb-1 pt-1">
+
+                <form>
+                    <div class="form-group basic">
+                        <div class="input-wrapper">
+                            <label class="label" for="name1">Name</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" value="{{contact.0}}">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group basic">
+                        <div class="input-wrapper">
+                            <label class="label" for="email1">E-mail</label>
+                            <input type="email" class="form-control" id="Email" name="Email" value="{{contact.1}}">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group basic">
+                        <div class="input-wrapper">
+                            <label class="label" for="password1">Phone number</label>
+                            <input type="text" class="form-control" id="Telefono" name="Telefono" value="{{contact.2}}">
+                            <i class="clear-input"><ion-icon name="close-circle"></ion-icon></i>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <!-- Creditos -->
+        <div class="section full mt-1 mb-2">
+            <br>
+            <div class="section-title">Manage your credits</div>
+            <div class="wide-block p-0">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Cuotas</th>
+                                <th scope="col">Valor Cuota</th>
+                                <th scope="col">Intereses</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for Dcredit in credit %}
+                            <tr>
+                                <td>{{Dcredit[1]}}</td>
+                                <td>{{Dcredit[2]}}</td>
+                                <td>{{Dcredit[3]}}</td>
+                                <td>{{Dcredit[4]}}</td>
+                                <td>{{Dcredit[5]}}</td>
+                                <td>
+                                    <a href="/edit/{{Dcredit[0]}}" class="btn btn-secondary">Edit</a>
+                                    <a class="btn btn-primary" data-toggle="modal" data-target="#actionSheetContent">Paid</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="modal fade action-sheet" id="actionSheetContent" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Action Sheet Content</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div class="action-sheet-content">
+                                    <p>
+                                        You really want to mark this credit as paid?
+                                    </p>
+                                    <a href="/mark_paid/{{Dcredit[0]}}" class="btn btn-primary btn-block" data-dismiss="modal">Mark as Paid</a>
+                                    <a href="#" class="btn btn-primary btn-block" data-dismiss="modal">Close</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+
+        <!-- Acciones -->
+        <div class="section full mt-1 mb-2">
+            <br>
+            <div class="section-title">Manage your stocks</div>
+            <div class="wide-block p-0">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for Dstock in stock %}
+                            <tr>
+                                <td>{{Dstock[1]}}</td>
+                                <td>{{Dstock[2]}}</td>
+                                <td>
+                                    <a href="#" class="btn btn-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <!-- cerrado principal-->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+
+</html>

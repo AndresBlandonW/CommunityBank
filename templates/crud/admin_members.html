@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Transactions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+        <div class="section full mt-1 mb-2">
+            <br>
+            <div class="section-title">Manage your community group</div>
+            <a href="{{url_for('add_member')}}" class="headerButton">
+                <span class="btn btn-primary rounded">Add Member</span>
+            </a>
+            <br>
+            <div class="wide-block p-0">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">CC</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in dataUsers %}
+                            <tr>
+                                <td>{{user.0}}</td>
+                                <td>{{user.1}}</td>
+                                <td>{{user.2}}</td>
+                                <td>{{user.3}}</td>
+                                <td>
+                                    <a href="/edit/{{user.0}}" class="btn btn-secondary">View</a>
+                                    <a href="#" class="btn btn-danger btn-delete">Remove</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+
+</html>

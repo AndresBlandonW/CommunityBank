@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Stocks</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Community Bank - Stocks">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Buy a Stock
+        </div>
+        <div class="right">
+            <a href="javascript:;" class="headerButton">
+                <ion-icon name="add-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section mt-2 mb-2">
+
+            <div class="goals">
+                <!-- item -->
+                <div class="item">
+                    <div class="in">
+                        <div>
+                            <h4>MAKE A CREDIT</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- * item -->
+                <!-- item -->
+                <form action="/create_credit" method="POST" autocomplete="off" accept-charset="UTF-8" name="Form">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="item">
+                        <div class="in">
+                            <div>
+                                <h4>Credit Details</h4>
+                            </div>
+                        </div>
+                        <br>
+                        <h5>Valor del credito:</h5>
+                        <input type="text" class="form-control" id="ValorCredit" name="ValorCredit" value="0" style="text-align: center;" />
+                        <br>
+                        <h5>Cuotas:</h5>
+                        <div class="">
+                            <div class="row">
+
+                                <div class="">
+                                    <button type="button" class="btn btn-outline-primary shadowed mr-1 mb-1" onclick="decrementValue()">-</button>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" class="form-control" id="cuotas" name="cuotas" value="0" style="text-align: center;" readonly/>
+                                </div>
+                                <div class="">
+                                    <button type="button" class="btn btn-outline-primary shadowed mr-1 mb-1" onclick="incrementValue()">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- * item -->
+                    <!-- item -->
+                    <div class="item">
+                        <div class="">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="in">
+                                        <div>
+                                            <h4>Total intereses:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" id="totalIntereses" name="totalIntereses" style="text-align: center;" readonly/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="in">
+                                        <div>
+                                            <h4>Total a pagar:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" id="totalPagar" name="totalPagar" style="text-align: center;" readonly/>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="in">
+                                        <div>
+                                            <h4>Cuotas de:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <input type="text" id="valorCuota" name="valorCuota" style="text-align: center;" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- * item -->
+
+                    <!-- item -->
+                    <div class="item">
+                        <div class="wide-block pt-2 pb-2">
+                            <a class="btn btn-primary btn-lg mr-1" data-toggle="modal" data-target="#creditSheet">Make a credit</a>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade action-sheet" id="creditSheet" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Confirmation</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="action-sheet-content">
+                                        <p>
+                                            Do you really want to get a credit?
+                                        </p>
+                                        <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+                                        <a href="#" class="btn btn-primary btn-block" data-dismiss="modal">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- * item -->
+            </div>
+
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <script>
+        function incrementValue() {
+            if (document.getElementById('cuotas').value < 12) {
+                var textBox = document.getElementById('cuotas')
+                textBox.value++;
+
+                var importe = document.getElementById("ValorCredit").value;
+                var cuotas = document.getElementById("cuotas").value
+                var totalpagar = parseFloat(importe * 0.05 * cuotas) + parseFloat(importe)
+                document.getElementById("totalIntereses").value = parseInt(importe * 0.05 * cuotas);
+                document.getElementById("totalPagar").value = parseInt(totalpagar);
+                document.getElementById("valorCuota").value = parseInt(totalpagar / cuotas);
+            }
+
+        }
+
+        function decrementValue() {
+            if (document.getElementById('cuotas').value > 0) {
+                var textBox = document.getElementById('cuotas')
+                textBox.value--;
+
+                var importe = document.getElementById("ValorCredit").value;
+                var cuotas = document.getElementById("cuotas").value
+                var totalpagar = parseFloat(importe * 0.05 * cuotas) + parseFloat(importe)
+                document.getElementById("totalIntereses").value = parseInt(importe * 0.05 * cuotas);
+                document.getElementById("totalPagar").value = parseInt(totalpagar);
+                document.getElementById("valorCuota").value = parseInt(totalpagar / cuotas);
+            }
+        }
+    </script>
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+{% with message = get_flashed_messages() %}
+    {% if message %}
+        {% for mess in message %}
+            {{ mess }}
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="/add", method="POST">
+
+    <input type="integer" name="cc" placeholder="Ingrese su numero de identificacion"/>
+    <input type="text" name="fullname" placeholder="Ingrese su nombre"/>
+    <input type="text" name="email" placeholder="Ingrese su email"/>
+    <input type="text" name="phone" placeholder="Ingrese su telefono"/>
+
+    <button>
+        Guardar
+    </button>
+</form>
+
+<div>
+    {% for line in list_partner %}
+
+    <p>{{line.cc}}</p>
+    <p>{{line.fullname}}</p>
+    <p>{{line.email}}</p>
+    <p>{{line.phone}}</p>
+    <div>
+        <a href="{{ url_for('partner.update', cc=line.cc) }}">Actualizar</a>
+        <a href="{{ url_for('partner.delete', cc=line.cc) }}">Borrar</a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

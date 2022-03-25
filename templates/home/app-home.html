@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="modal fade dialogbox show" role="dialog" style="display: block; padding-right: 17px;" aria-modal="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Information</h5>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-inline">
+                            <a href="{{url_for('home')}}" class="btn btn-text-secondary" data-dismiss="modal">CLOSE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <!-- Wallet Card -->
+        <div class="section wallet-card-section pt-1">
+            <div class="wallet-card">
+                <!-- Earnings -->
+                <div class="balance">
+                    <div class="left">
+                        <span class="title">Capital invested</span>
+                        <h1 class="total">$ {{ currStock | currencyFormat }}</h1>
+                    </div>
+                    <!-- Deposit button-->
+                    <div class="right">
+                    </div>
+                </div>
+                <!-- * Earnings -->
+
+                <div class="wallet-footer">
+                </div>
+            </div>
+        </div>
+
+        <!-- Money Stats -->
+        <div class="section">
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div class="stat-box">
+                        <div class="title">Current debit</div>
+                        <div class="value">$ {{ currCred | currencyFormat }}</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="stat-box">
+                        <div class="title">Value next installment</div>
+                        <div class="value text-success">$ {{ valueCuot | currencyFormat }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-6">
+                    <div class="stat-box">
+                        <div class="title">Fees to pay</div>
+                        <div class="value">{{ pendCuot }}</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="stat-box">
+                        <div class="title">Total stocks</div>
+                        <div class="value">{{ totalStocks }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Stats -->
+
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="section-heading">
+                <h2 class="title">Bank options</h2>
+            </div>
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{url_for('admin_members')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/admin.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Admin My Community</strong>
+                            <p>Control your group</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="{{url_for('buyStocks')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/stocks.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Buy Stocks</strong>
+                            <p>Make a profit</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="{{url_for('checkCredit')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/credit.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Make a Credit</strong>
+                            <p>Get money you need</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+                <!-- item -->
+                <a href="{{url_for('partners')}}" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/partners.png')}}" alt="img" class="image-block imaged w76">
+                        <div>
+                            <strong class="maincards">Partners</strong>
+                            <p>Inquire about associates</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <br>
+        <!-- app footer -->
+        <div class="appFooter">
+            <div class="footer-title">
+                Copyright © Community Bank. All Rights Reserved.
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Ionicons -->
+    <!--<script src="../../../../unpkg.com/ionicons%405.0.0/dist/ionicons.js"></script>-->
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+</html>

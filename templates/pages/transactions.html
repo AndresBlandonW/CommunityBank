@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Transactions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <!-- Transactions -->
+        <div class="section mt-2">
+            <div class="section-title">Transactions</div>
+            <div class="transactions">
+                <!-- item -->
+                {% for transaction in transactions %}
+                <a href="#" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/transaction.png')}}" alt="img" class="image-block imaged w48">
+                        <div>
+                            <strong>{{transaction[2]}}</strong>
+                            <p>Fecha: {{transaction[0]}}</p>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="price {{'text-danger' if transaction[3] == '-'}}">{{transaction[3]}} ${{transaction[1] | currencyFormat }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <br>
+        <!--
+        <div class="section mt-2 mb-2">
+            <a href="javascript:;" class="btn btn-primary btn-block btn-lg">Load More</a>
+        </div> -->
+
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from egemem.com/theme/finapp/view/app-transactions.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 12 Feb 2020 06:38:02 GMT -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Community Bank - Credit History</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="{{url_for('static', filename='img/logo-icon.png')}}" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    {% include "complements/header.html" %}
+    <!-- App Header -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
+        <div class="modal fade dialogbox show" role="dialog" style="display: block; padding-right: 17px;" aria-modal="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Information</h5>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                        <div class="btn-inline">
+                            <a href="{{url_for('creditHist')}}" class="btn btn-text-secondary" data-dismiss="modal">CLOSE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show"></div>
+        {% endfor %} {% endif %} {% endwith %}
+
+
+        <!-- Transactions -->
+        <div class="section mt-2">
+            <div class="section-title">Credits</div>
+            <div class="transactions">
+                <!-- item -->
+                {% for cred in credits %}
+                <a href="#" class="item">
+                    <div class="detail">
+                        <img src="{{url_for('static', filename='img/transaction.png')}}" alt="img" class="image-block imaged w48">
+                        <div>
+                            <H3>Credit</H3>
+                            <H6>Fecha: {{cred[0]}}</H6>
+                            <H6>Numero de cuotas: {{cred[2]}}</H6>
+                            <H6>Valor de la cuota: {{cred[3] | currencyFormat }}</H6>
+                            <H6>Interes del prestamos: {{cred[4] | currencyFormat }}</H6>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="price"> ${{cred[1] | currencyFormat }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <br>
+        <!--
+        <div class="section mt-2 mb-2">
+            <a href="javascript:;" class="btn btn-primary btn-block btn-lg">Load More</a>
+        </div> -->
+
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- App Bottom Menu -->
+    {% include "complements/navbar.html" %}
+    <!-- App Bottom Menu -->
+
+
+    <!-- App Sidebar -->
+    {% include "complements/sidebar.html" %}
+    <!-- App Sidebar -->
+
+
+    <!-- ///////////// Js Files ////////////////////  -->
+    <!-- Jquery -->
+    <script src="{{url_for('static', filename='js/lib/jquery-3.4.1.min.js')}}"></script>
+    <!-- Bootstrap-->
+    <script src="{{url_for('static', filename='js/lib/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/lib/bootstrap.min.js')}}"></script>
+    <!-- Owl Carousel -->
+    <script src="{{url_for('static', filename='js/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- Base Js File -->
+    <script src="{{url_for('static', filename='js/base.js')}}"></script>
+
+
+</body>
+
+
+</html>
