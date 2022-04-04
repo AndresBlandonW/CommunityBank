@@ -29,3 +29,8 @@ Create a web application that allows a group of known people to create a banking
 - Flask_ReCaptcha==0.4.2
 - Flask_WTF==1.0.0
 
+
+## Authors
+Andres Blandon - [Github](https://github.com/andresblandontw)
+Adrian Ceron - [Github](https://github.com/afecego)
+
