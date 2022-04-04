@@ -19,6 +19,7 @@ Create a web application that allows a group of known people to create a banking
 - MySQL
 - LAMP (Linux, Apache, MySQL)
 
+
 **Requirements**
 - Authy==2.2.6
 - Babel==2.9.1
