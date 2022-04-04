@@ -9,9 +9,7 @@ Create a web application that allows a group of known people to create a banking
 - Module to buy stocks
 - Transactions module and view of money and expenses
 
-![Image text](https://github.com/AndresBlandonW/CommunityBank/blob/main/Screenshots/Capture3.jpg)
-
-![Image text](https://github.com/AndresBlandonW/CommunityBank/blob/main/Screenshots/Capture2.jpg)
+![alt-text-1](https://github.com/AndresBlandonW/CommunityBank/blob/main/Screenshots/Capture3.jpg) ![alt-text-2](https://github.com/AndresBlandonW/CommunityBank/blob/main/Screenshots/Capture2.jpg)
 
 **Development languages**
 - Python Flask
