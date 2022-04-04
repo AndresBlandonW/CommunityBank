@@ -31,6 +31,6 @@ Create a web application that allows a group of known people to create a banking
 
 
 ## Authors
-Andres Blandon - [Github](https://github.com/andresblandontw)
-Adrian Ceron - [Github](https://github.com/afecego)
+- Andres Blandon - [Github](https://github.com/andresblandontw)
+- Adrian Ceron - [Github](https://github.com/afecego)
 
